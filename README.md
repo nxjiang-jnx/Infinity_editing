@@ -91,7 +91,8 @@ We provide Infinity models for you to play with, which are on <a href='https://h
 |   model    | Resolution |   GenEval    | DPG | HPSv2.1 | HF weights🤗                                                                        |
 |:----------:|:-----:|:--------:|:---------:|:-------:|:------------------------------------------------------------------------------------|
 |  Infinity-2B   |  1024  |   0.69 / 0.73 $^{\dagger}$   |    83.5    |  32.2   | [infinity_2b_reg.pth](https://huggingface.co/FoundationVision/infinity/blob/main/infinity_2b_reg.pth) |
-|  Infinity-8B   |  1024  |  -  |    -    |  -   | [infinity_8b.pth](https://huggingface.co/FoundationVision/Infinity/tree/main/infinity_8b_weights) |
+|  Infinity-8B   |  1024  |  -  |    -    |  -   | [infinity_8b_weights](https://huggingface.co/FoundationVision/Infinity/tree/main/infinity_8b_weights) |
+|  Infinity-8B   |  512  |  -  |    -    |  -   | [infinity_8b_512x512_weights](https://huggingface.co/FoundationVision/Infinity/tree/main/infinity_8b_weights) |
 |  Infinity-20B   |  1024  |  -  |    -    |  -   | [Coming Soon](TBD) |
 
 ${\dagger}$ result is tested with a [prompt rewriter](tools/prompt_rewriter.py). 

@@ -20,7 +20,7 @@
 <p>
 
 ## 🔥 Updates!!
-* Apr 24, 2025: 🍉 Release a middle stage model of Infinity-8B generating 512x512 images.
+* Jun 24, 2025: 🍉 Release a middle stage model of Infinity-8B generating 512x512 images.
 * Apr 24, 2025: 🔥 Infinity is accepted as CVPR 2025 Oral.
 * Feb 18, 2025: 🔥 Infinity-8B Weights & Code is released!
 * Feb 7, 2025: 🌺 Infinity-8B Demo is released! Check [demo](https://opensource.bytedance.com/gmpt/t2i/invite).

@@ -21,6 +21,7 @@
 
 ## 🔥 Updates!!
 * Jun 24, 2025: 🍉 Release a middle stage model of Infinity-8B generating 512x512 images.
+* May 25, 2025: 🔥 Release Infinity Image tokenizer training code & setting, Check [Link](https://github.com/FoundationVision/BitVAE)
 * Apr 24, 2025: 🔥 Infinity is accepted as CVPR 2025 Oral.
 * Feb 18, 2025: 🔥 Infinity-8B Weights & Code is released!
 * Feb 7, 2025: 🌺 Infinity-8B Demo is released! Check [demo](https://opensource.bytedance.com/gmpt/t2i/invite).
@@ -37,6 +38,7 @@ We also provide [interactive_infer.ipynb](tools/interactive_infer.ipynb) and [in
 
 ## 📑 Open-Source Plan
   - [ ] Infinity-20B Checkpoints
+  - [ ] Infinity Image tokenizer training code & setting
   - [x] Infinity-8B Checkpoints (512x512)
   - [x] Infinity-8B Checkpoints (1024x1024)
   - [x] Training Code 
@@ -78,6 +80,7 @@ Bitwise Self-Correction✨: Teacher-forcing training in AR brings severe train-t
 We provide Infinity models for you to play with, which are on <a href='https://huggingface.co/FoundationVision/infinity'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20weights-FoundationVision/Infinity-yellow'></a> or can be downloaded from the following links:
 
 ### Visual Tokenizer
+* Release Infinity Image tokenizer training code & setting, Check [Link](https://github.com/FoundationVision/BitVAE)
 
 |   vocabulary    | stride |   IN-256 rFID $\downarrow$    | IN-256 PSNR $\uparrow$ | IN-512 rFID $\downarrow$ | IN-512 PSNR $\uparrow$ | HF weights🤗                                                                        |
 |:----------:|:-----:|:--------:|:---------:|:-------:|:-------:|:------------------------------------------------------------------------------------|

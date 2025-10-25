@@ -38,7 +38,7 @@ We also provide [interactive_infer.ipynb](tools/interactive_infer.ipynb) and [in
 
 ## 📑 Open-Source Plan
   - [ ] Infinity-20B Checkpoints
-  - [ ] Infinity Image tokenizer training code & setting
+  - [x] Infinity Image tokenizer training code & setting
   - [x] Infinity-8B Checkpoints (512x512)
   - [x] Infinity-8B Checkpoints (1024x1024)
   - [x] Training Code 

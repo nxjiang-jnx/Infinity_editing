@@ -17,7 +17,6 @@ import torch
 from matplotlib import pyplot as plt
 
 from huggingface_hub import login
-# login(token="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")
 
 # 强制使用新的缓存目录
 cache_dir = os.path.join(os.path.expanduser("~"), ".cache", "huggingface")

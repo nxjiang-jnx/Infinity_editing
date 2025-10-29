@@ -1,0 +1,111 @@
+# EraseInfinity Configuration for Nude Content Erasing
+# 基于 Infinity 自回归模型的 nude 概念擦除配置
+
+# ==================== 模型配置 ====================
+model_name: "infinity_2b_reg"
+vae_ckpt: "path/to/infinity_vae_d32reg.pth"  # VAE checkpoint 路径
+gpt_ckpt: "path/to/infinity_2b_reg.pth"      # Infinity GPT checkpoint 路径
+t5_path: "google/flan-t5-xl"                  # T5 text encoder 路径
+
+# ==================== LoRA 配置 ====================
+# Infinity 模型需要添加 LoRA 适配器进行微调
+use_lora: true
+lora_rank: 8
+lora_alpha: 8
+lora_dropout: 0.0
+# 目标模块：Infinity 的 self-attention 和 cross-attention 层
+lora_target_modules:
+  - "attn_blocks.*.attn.qkv"           # self-attention 的 q,k,v 投影
+  - "cross_attn_blocks.*.attn.mat_qkv" # cross-attention 的投影
+  - "attn_blocks.*.ffn.fc1"            # feedforward 层
+  - "attn_blocks.*.ffn.fc2"
+
+# ==================== 数据配置 ====================
+instance_data_dir: "/shared_disk/users/jeff/code/zhaoxin.fan/Infinity/EraseInfinity/data/nude_images"
+instance_prompt: "nude person, naked body, explicit content, nudity"
+key_word: "nude"
+# 负样本提示词（用于 ESD loss）
+negative_prompt: "clothed person, fully dressed, appropriate content"
+# 与 EraseAnything 保持一致的 prompt 配置
+prompt_a: "nude person, naked body, explicit content, nudity"
+prompt_b: "clothed person, fully dressed, appropriate content"
+
+# ==================== 训练配置 ====================
+resolution: 256  # Infinity 训练分辨率 (pn=0.06M)
+pn: "0.06M"      # Infinity pixel number 配置
+train_batch_size: 1
+gradient_accumulation_steps: 1
+num_train_epochs: 1
+max_train_steps: 200
+learning_rate: 1e-3
+lr_scheduler: "constant"
+lr_warmup_steps: 0
+
+# ==================== 优化器配置 ====================
+optimizer: "adamw"
+adam_beta1: 0.9
+adam_beta2: 0.999
+adam_weight_decay: 1e-5
+adam_epsilon: 1e-8
+max_grad_norm: 1.0
+
+# ==================== ESD Loss 配置 ====================
+# ESD (Erased Stable Diffusion) loss 配置
+lamb1: 1.0                # ESD loss 权重（与 EraseAnything 一致）
+lamb2: 0.001              # attention weight loss（虽然我们只做 ESD，但保持一致性）
+lamb3: 0.1                # lora loss（虽然我们只做 ESD，但保持一致性）
+lamb4: 0.1                # InfoNCE loss（虽然我们只做 ESD，但保持一致性）
+negative_guidance: 1      # ESD negative guidance 强度
+start_guidance: 3.0       # 采样时的 guidance scale
+ddim_steps: 28           # DDIM 采样步数
+
+# ==================== 其他配置 ====================
+mixed_precision: "bf16"
+dataloader_num_workers: 0
+seed: 42
+output_dir: "/shared_disk/users/jeff/code/zhaoxin.fan/Infinity/EraseInfinity/outputs/erase_nude"
+logging_dir: "logs"
+checkpointing_steps: 2000
+save_steps: 200
+log_freq: 10
+cache_latents: false
+with_prior_preservation: false
+gradient_checkpointing: false
+train_text_encoder: false
+
+# ==================== 分布式训练配置 ====================
+devices: "0"              # 使用的 GPU 设备
+world_size: 1
+
+# ==================== Wandb 配置 ====================
+report_to: "wandb"
+project_name: "EraseInfinity"
+exp_name: "erase_nude_infinity_2b"
+
+# ==================== 数据增强配置 ====================
+center_crop: false
+random_flip: false
+repeats: 1                # 数据重复次数（与 EraseAnything 一致）
+
+# ==================== 推理配置 ====================
+cfg_scale: 7.5            # classifier-free guidance scale
+sampling_steps: 250       # Infinity 采样步数
+top_p: 0.9
+top_k: 900
+
+# ==================== EraseAnything 兼容配置 ====================
+# 与原始 EraseAnything 配置保持一致的参数
+guidance_scale: 3.5
+logit_mean: 0.0
+logit_std: 1.0
+mode_scale: 1.29
+weighting_scheme: "none"
+max_sequence_length: 256
+use_8bit_adam: false
+lr_num_cycles: 1
+lr_power: 1.0
+revision: null
+variant: null
+lora_layers: null
+rank: 8
+

@@ -18,7 +18,6 @@ from matplotlib import pyplot as plt
 
 from huggingface_hub import login
 
-# 强制使用新的缓存目录
 cache_dir = os.path.join(os.path.expanduser("~"), ".cache", "huggingface")
 os.makedirs(cache_dir, exist_ok=True)
 
